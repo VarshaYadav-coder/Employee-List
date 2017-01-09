@@ -10,12 +10,12 @@ describe('Service: OfflineModel', function () {
   beforeEach(inject(function (_OfflineModel_) {
     OfflineModel = _OfflineModel_;
     myMock = [
-      {_id: 1, name: 'Allan Benjamin', address: 'St. Claire Avenue, Nº 101', phone: '557188339933'},
-      {_id: 2, name: 'Georgia Smith', address: 'St. Claire Avenue, Nº 102', phone: '557188339933'},
-      {_id: 3, name: 'Gregory Levinsky', address: 'St. Claire Avenue, Nº 103', phone: '557188339933'},
-      {_id: 4, name: 'Jackeline Macfly', address: 'St. Claire Avenue, Nº 104', phone: '557188339933'},
-      {_id: 5, name: 'Joseph Climber', address: 'St. Claire Avenue, Nº 105', phone: '557188339933'},
-      {_id: 6, name: 'Joshua Jackson', address: 'St. Claire Avenue, Nº 106', phone: '557188339933'}
+      {_id: 1, name: 'Allan Benjamin', department: 'St. Claire Avenue, Nº 101', phone: '557188339933', title: 'SSE'},
+      {_id: 2, name: 'Georgia Smith', department: 'St. Claire Avenue, Nº 102', phone: '557188339933', title: 'SSE'},
+      {_id: 3, name: 'Gregory Levinsky', department: 'St. Claire Avenue, Nº 103', phone: '557188339933', title: 'SSE'},
+      {_id: 4, name: 'Jackeline Macfly', department: 'St. Claire Avenue, Nº 104', phone: '557188339933', title: 'SSE'},
+      {_id: 5, name: 'Joseph Climber', department: 'St. Claire Avenue, Nº 105', phone: '557188339933', title: 'SSE'},
+      {_id: 6, name: 'Joshua Jackson', department: 'St. Claire Avenue, Nº 106', phone: '557188339933', title: 'SSE'}
     ];
     MyOfflineModel = OfflineModel.init('myMock', myMock);
   }));
@@ -38,8 +38,9 @@ describe('Service: OfflineModel', function () {
     var contact = [
       {
         name: 'This is a test',
-        address: 'Adress test',
-        phone: '557188998877'
+        department: 'Adress test',
+        phone: '557188998877',
+        title: 'SSE'
       }
     ];
     expect(MyOfflineModel.create(contact).length).toEqual(7);
@@ -48,8 +49,9 @@ describe('Service: OfflineModel', function () {
   it('#update', function(){
     var contact = {
         name: 'This is a test',
-        address: 'Adress test',
+        department: 'Adress test',
         phone: '557188998877',
+        title: 'SSE',
         _id: 1
       };
 
@@ -64,7 +66,7 @@ describe('Service: OfflineModel', function () {
     expect(MyOfflineModel.update(contact).length).toEqual(7);
 
     expect(myMock[0].name).toEqual('Allan Benjamin');
-    expect(myMock[0].address).toEqual('St. Claire Avenue, Nº 101');
+    expect(myMock[0].department).toEqual('St. Claire Avenue, Nº 101');
     expect(myMock[0]._id).toEqual(1);
     expect(myMock[0].phone).toEqual('557188339933');
 
@@ -77,12 +79,12 @@ describe('Service: OfflineModel', function () {
     };
     var item = filterSelect(opt)[0];
     expect(item.name).toEqual(contact.name);
-    expect(item.address).toEqual(contact.address);
+    expect(item.department).toEqual(contact.department);
     expect(item._id).toEqual(contact._id);
     expect(item.phone).toEqual(contact.phone);
 
     expect(item.name !== myMock[0].name).toEqual(true);
-    expect(item.address !== myMock[0].address).toEqual(true);
+    expect(item.department !== myMock[0].department).toEqual(true);
     expect(item.phone !==myMock[0].phone).toEqual(true);
     expect(item._id === myMock[0]._id).toEqual(true);
   });
@@ -100,7 +102,7 @@ describe('Service: OfflineModel', function () {
 
   it('_items params validation', function () {
     var listItems = [
-      {_id: 6, name: 'Joshua Jackson', address: 'St. Claire Avenue, Nº 106', phone: '557188339933'}
+      {_id: 6, name: 'Joshua Jackson', department: 'St. Claire Avenue, Nº 106', phone: '557188339933', title: 'SSE'}
     ];
     expect(typeof MyOfflineModel.setListItems(listItems) === 'object').toBe(true);
     expect(MyOfflineModel.getListItems()).toEqual(listItems);
