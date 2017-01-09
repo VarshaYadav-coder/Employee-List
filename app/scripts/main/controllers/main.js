@@ -41,7 +41,7 @@
     this.reset = function() {
       this.contact = {
         name: '',
-        address: '',
+        department: '',
         phone: ''
       };
     };
