@@ -11,7 +11,7 @@
      *
      * @type {Array}
      */
-    var contactFields = ['_id', 'name' , 'address' , 'phone'];
+    var contactFields = ['_id', 'name' , 'department' , 'phone', 'title'];
 
     Contacts.setFields(contactFields);
 
